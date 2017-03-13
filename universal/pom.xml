@@ -8,9 +8,8 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <groupId>dev.wolveringer.spm</groupId>
-  <artifactId>bungee</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>bungee</name>
+  <artifactId>universal</artifactId>
+  <name>universal</name>
   
   <url>http://maven.apache.org</url>
   <properties>

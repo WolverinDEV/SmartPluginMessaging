@@ -21,5 +21,6 @@
   <modules>
     <module>bungee</module>
     <module>spigot</module>
+    <module>universal</module>
   </modules>
 </project>

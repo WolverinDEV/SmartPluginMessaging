@@ -7,10 +7,11 @@
     <artifactId>SmartPluginMessaging</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>dev.wolveringer</groupId>
+  <groupId>dev.wolveringer.spm</groupId>
   <artifactId>spigot</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>spigot</name>
+  
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
