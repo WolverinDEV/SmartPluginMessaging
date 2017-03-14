@@ -1,0 +1,7 @@
+name: SmartPluginMessaging
+version: ${project.version}
+main: dev.wolveringer.spm.bungee.SmartPluginMessagingPlugin
+
+commands:
+  SmartPluginMessagingeBungee:
+    alias: [spmb]

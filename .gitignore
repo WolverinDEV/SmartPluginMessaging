@@ -1,6 +1,9 @@
 #Maven
 /bin/
 /target/
+/bungee/target/
+/spigot/target/
+/universal/target/
 
 #Eclipse stuff
 .classpath
