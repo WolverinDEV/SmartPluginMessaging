@@ -16,10 +16,10 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class TargetKnot<TypePlugin, TypePlayer> {
-	private List<TypePlayer> connections = new ArrayList<>();
+public class TargetKnot<TypePlugin, TypePlayer, SelfType> {
+	protected List<TypePlayer> connections = new ArrayList<>();
 	
-	private final AbstractSmartPluginMessaging<TypePlugin, TypePlayer> handle;
+	private final AbstractSmartPluginMessaging<TypePlugin, TypePlayer, ?> handle;
 	@Getter
 	private final String name;
 	

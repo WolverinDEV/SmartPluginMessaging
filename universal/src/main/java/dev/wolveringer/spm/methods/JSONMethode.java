@@ -4,11 +4,11 @@ import org.json.JSONObject;
 
 import dev.wolveringer.spm.packets.JSONMessagePacket;
 
-public class JSONMethode extends AbstractMethodeTransformer<JSONMessagePacket, JSONMessagePacket, JSONObject, JSONObject>{
+public class JSONMethode<TypePlayer> extends AbstractMethodeTransformer<JSONMessagePacket, JSONMessagePacket, JSONObject, JSONObject, TypePlayer>{
 
 	public JSONMethode() { }
 
-	public JSONMethode(LamdaCallable<JSONObject, JSONObject> lamda) {
+	public JSONMethode(LamdaCallable<JSONObject, JSONObject, TypePlayer> lamda) {
 		super(lamda);
 	}
 

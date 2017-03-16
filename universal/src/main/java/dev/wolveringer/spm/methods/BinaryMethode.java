@@ -3,13 +3,17 @@ package dev.wolveringer.spm.methods;
 import dev.wolveringer.spm.buffer.DataBuffer;
 import dev.wolveringer.spm.packets.BinaryMessagePacket;
 
-public class BinaryMethode extends AbstractMethodeTransformer<BinaryMessagePacket, BinaryMessagePacket, DataBuffer, DataBuffer>{
+public class BinaryMethode<TypePlayer> extends AbstractMethodeTransformer<BinaryMessagePacket, BinaryMessagePacket, DataBuffer, DataBuffer, TypePlayer>{
 
 	public BinaryMethode() {
 		super();
 	}
 
-	public BinaryMethode(LamdaCallable<DataBuffer, DataBuffer> lamda) {
+	public BinaryMethode(LamdaCallable<DataBuffer, DataBuffer, TypePlayer> lamda) {
+		super(lamda);
+	}
+	
+	public BinaryMethode(NoPlayerLamdaCallable<DataBuffer, DataBuffer> lamda) {
 		super(lamda);
 	}
 

@@ -4,14 +4,14 @@ import java.util.HashMap;
 
 import dev.wolveringer.spm.packets.MessagePacket;
 
-public class MethodeBinding {
-	public static final CallableMethode<MessagePacket, MessagePacket> NO_BINDING = (parm) -> {
+public class MethodeBinding<TypePlayer> {
+	public static final CallableMethode<MessagePacket, MessagePacket, Object> NO_BINDING = (player, parm) -> {
 		throw new MethodeNotFoundException("Cant find target methode");
 	};
 	
-	private HashMap<String, CallableMethode<? extends MessagePacket, ? extends MessagePacket>> bindings = new HashMap<>();
+	private HashMap<String, CallableMethode<? extends MessagePacket, ? extends MessagePacket, TypePlayer>> bindings = new HashMap<>();
 	
-	public void bind(String name, CallableMethode<? extends MessagePacket, ? extends MessagePacket> methode){
+	public void bind(String name, CallableMethode<? extends MessagePacket, ? extends MessagePacket, TypePlayer> methode){
 		if(bindings.get(name.toUpperCase()) != null) throw new RuntimeException("Methode "+name+" alredy registered!");
 		bindings.put(name.toUpperCase(), methode);
 	}
@@ -21,7 +21,7 @@ public class MethodeBinding {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public <P extends MessagePacket, R extends MessagePacket> CallableMethode<P, R> getMethode(String name){
-		return (CallableMethode<P, R>) bindings.getOrDefault(name.toUpperCase(), NO_BINDING);
+	public <P extends MessagePacket, R extends MessagePacket> CallableMethode<P, R, TypePlayer> getMethode(String name){
+		return (CallableMethode<P, R, TypePlayer>) bindings.getOrDefault(name.toUpperCase(), (CallableMethode<P, R, TypePlayer>) NO_BINDING);
 	}
 }

@@ -8,5 +8,6 @@ public class SmartPluginMessagingPlugin extends Plugin{
 		System.out.println("Enable SmartPluginMessaging");
 		SmartPluginMessaging.setInstance(new SmartPluginMessaging(this, "Bungee01"));
 		SmartPluginMessaging.getInstance().load();
+		SmartPluginMessaging.getInstance().getTarget("server01").broadcast("Hello world!");
 	}
 }

@@ -21,6 +21,7 @@ import com.comphenix.protocol.PacketType.Play;
 import dev.wolveringer.cache.CachedArrayList;
 import dev.wolveringer.cache.ReadOnlyMapEntry;
 import dev.wolveringer.spm.AbstractSmartPluginMessaging;
+import dev.wolveringer.spm.KnotType;
 import dev.wolveringer.spm.MessageListener;
 import dev.wolveringer.spm.buffer.DataBuffer;
 import dev.wolveringer.spm.future.InstantProgressFuture;
@@ -41,8 +42,6 @@ public class SmartPluginMessaging extends AbstractSmartPluginMessaging<Plugin, P
 	@Getter
 	@Setter
 	private static SmartPluginMessaging instance;
-	
-	private List<MessageBungee> avariableBungees = new ArrayList<>();
 	
 	private final Listener playerListener = new Listener() {
 		@EventHandler
@@ -73,7 +72,7 @@ public class SmartPluginMessaging extends AbstractSmartPluginMessaging<Plugin, P
 	};
 	
 	public SmartPluginMessaging(Plugin instance,String serverName){
-		super(instance, serverName);
+		super(instance, serverName, KnotType.SERVER);
 		getMethodeBinding().bind("broadcastMessage", new BinaryMethode(buffer -> {
 			Bukkit.broadcastMessage(buffer.readString());
 			return null;
@@ -99,16 +98,5 @@ public class SmartPluginMessaging extends AbstractSmartPluginMessaging<Plugin, P
 	@Override
 	public void unload(){
 		HandlerList.unregisterAll(this.playerListener);
-	}
-	public MessageBungee getBungee(Player player){
-		for(MessageBungee bungee : this.avariableBungees)
-			if(bungee.getConnections().contains(player)) return bungee;
-		return null;
-	}
-	
-	public MessageBungee getBungee(String name){
-		for(MessageBungee bungee : this.avariableBungees)
-			if(bungee.getName().equalsIgnoreCase(name)) return bungee;
-		return null;
 	}
 }

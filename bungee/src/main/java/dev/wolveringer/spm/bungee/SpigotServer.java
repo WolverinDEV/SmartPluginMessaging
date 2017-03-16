@@ -10,7 +10,7 @@ import dev.wolveringer.spm.packets.MessageResponsePacket.MessageStatus;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Plugin;
 
-public class SpigotServer extends TargetKnot<Plugin, ProxiedPlayer> {
+public class SpigotServer extends TargetKnot<Plugin, ProxiedPlayer, SpigotServer> {
 
 	public SpigotServer(SmartPluginMessaging handle, String name) {
 		super(handle, name);

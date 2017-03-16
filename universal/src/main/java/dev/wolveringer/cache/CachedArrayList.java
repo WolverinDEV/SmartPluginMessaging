@@ -5,7 +5,36 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
 public class CachedArrayList<E> extends ArrayList<E> {
+	public static final class CachedArrayListBuilder<E> {
+		private int time = 1;
+		private TimeUnit unit = TimeUnit.MINUTES;
+		private UnloadListener<E> ulistener = null;
+		
+		private CachedArrayListBuilder(){}
+		
+		public CachedArrayListBuilder<E> timeout(int time, TimeUnit unit){
+			this.time = time;
+			this.unit = unit;
+			return this;
+		}
+		
+		public CachedArrayListBuilder<E> listener(UnloadListener<E> listener){
+			this.ulistener = listener;
+			return this;
+		}
+		
+		public CachedArrayList<E> build(){
+			CachedArrayList<E> out = new CachedArrayList<>(time, unit);
+			if(ulistener != null) out.addUnloadListener(ulistener);
+			return out;
+		}
+	}
+	public static final <E> CachedArrayListBuilder<E> builder(){
+		return new CachedArrayListBuilder<E>();
+	}
+	
 	@FunctionalInterface
 	public static interface UnloadListener<E> {
 		public boolean canUnload(E element);
